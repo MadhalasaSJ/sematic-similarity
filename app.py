@@ -23,8 +23,3 @@ def predict():
     embeddings = model.encode([text1, text2])
     score = util.cos_sim(embeddings[0], embeddings[1]).item()
     return jsonify({"similarity score": round(score, 3)})
-
-# Remove this part entirely, so Gunicorn can handle running the app
-# if __name__ == "__main__":
-#     port = int(os.environ.get("PORT", 5000))
-#     app.run(host='0.0.0.0', port=port)
