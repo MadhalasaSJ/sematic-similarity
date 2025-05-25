@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pkl
+*.sqlite3
+
+# Virtual Environment
+senv/
+env/
+venv/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output
+evaluated_similarity_scores.csv
