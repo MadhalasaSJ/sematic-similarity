@@ -1,11 +1,9 @@
 from flask import Flask, request, jsonify
 from sentence_transformers import SentenceTransformer, util
-import os
 
 app = Flask(__name__)
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-# Home route (GET)
 @app.route('/', methods=['GET'])
 def home():
     return '''
@@ -14,7 +12,6 @@ def home():
         {"text1": "your first sentence", "text2": "your second sentence"}</p>
     '''
 
-# Prediction route (POST)
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
@@ -27,7 +24,7 @@ def predict():
     score = util.cos_sim(embeddings[0], embeddings[1]).item()
     return jsonify({"similarity score": round(score, 3)})
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)    
-
+# Remove this part entirely, so Gunicorn can handle running the app
+# if __name__ == "__main__":
+#     port = int(os.environ.get("PORT", 5000))
+#     app.run(host='0.0.0.0', port=port)
