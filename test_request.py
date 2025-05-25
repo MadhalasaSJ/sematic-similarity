@@ -1,7 +1,7 @@
 import requests
 
 # Change this if running remotely
-url = "http://127.0.0.1:5000/predict"
+url = "https://sematic-similarity.onrender.com/predict"
 
 # Sample request payload
 data = {
